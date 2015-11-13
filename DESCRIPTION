@@ -1,0 +1,14 @@
+Package: imdb
+Title: Download IMDB Series Information Into Dataframe
+Version: 0.0.0.9000
+Authors@R: person("Roel M.", "Hogervorst", email = "hogervorst.rm@gmail.com", role = c("aut", "cre"))
+Description: This package downloads imdb information using http://
+    www.omdbapi.com and puts it into a dataframe. In the background a json is
+    downloaded and converted into a dataframe.
+Depends:
+    R (>= 3.2.2)
+Imports:
+    jsonlite(>= 0.9.17)
+License: MIT, CC BY 4.0
+LazyData: true
+RoxygenNote: 5.0.1
