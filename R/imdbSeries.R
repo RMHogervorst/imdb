@@ -1,18 +1,18 @@
 #' IMDB information downloader for series.
-#' 
+#'
 #' This function downloads series information into a dataframe.
 #' @param seasons Information about hat seasons do you want to download? Defaults to 1.
 #' @param seriesname Give the name of the series for example "House MD"
-#' @examples 
-#' \dontrun{ 
+#' @examples
+#' \dontrun{
 #' imdbSeries("House MD", 1:2)
 #' }
 #' @keywords imdb, series
-
+#' @export
 imdbSeries<-function(seriesname, seasons = 1) {
         library(jsonlite)
-        df<-data.frame(Title = character(0), Released = character(0), 
-                       Episode = character(0), imdbRating = character(0), 
+        df<-data.frame(Title = character(0), Released = character(0),
+                       Episode = character(0), imdbRating = character(0),
                        imdbID = character(0), Season =numeric(0))  #creates empty dataframe
         for( i in seasons) {
                 link<-gsub(pattern = " ", replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",seriesname,"&Season=",i, sep = "")))

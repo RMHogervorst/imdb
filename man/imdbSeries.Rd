@@ -15,7 +15,7 @@ imdbSeries(seriesname, seasons = 1)
 This function downloads series information into a dataframe.
 }
 \examples{
-\dontrun{ 
+\dontrun{
 imdbSeries("House MD", 1:2)
 }
 }
