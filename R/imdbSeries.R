@@ -10,7 +10,6 @@
 #' @keywords imdb, series
 #' @export
 imdbSeries<-function(seriesname, seasons = 1) {
-        library(jsonlite)
         df<-data.frame(Title = character(0), Released = character(0),
                        Episode = character(0), imdbRating = character(0),
                        imdbID = character(0), Season =numeric(0))  #creates empty dataframe

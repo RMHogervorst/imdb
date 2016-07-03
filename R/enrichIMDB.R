@@ -11,8 +11,7 @@
 #' @keywords imdb, enrich
 #' @export
 enrichIMDB<- function(df){
-        library(jsonlite)
-        #  read all unique  id's
+        #read all unique  id's
         IDs<- unique(df$imdbID)
         #issue with rbind that breaks the column names, forces me to create a useless row
         imdbID <- "t103"
