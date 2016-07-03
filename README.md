@@ -91,4 +91,4 @@ Contact
 
 I'm always looking for people to help me improve my work. Contact me directly, use an [issue](https://github.com/RMHogervorst/imdb/issues), fork me or submit a pull request.
 
-[![star this repo](http://githubbadges.com/star.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/badgecreatr) [![fork this repo](http://githubbadges.com/fork.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/badgecreatr/fork)
+[![star this repo](http://githubbadges.com/star.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/imdb) [![fork this repo](http://githubbadges.com/fork.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/imdb/fork)
