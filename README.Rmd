@@ -1,0 +1,84 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# Short description of the package
+
+imdb helps you in downloading series information from imdb. It has two functions
+one for basic information and a second one that also downloads synopsis, actors etc.
+
+
+# Installation instructions
+For now you will have to install using `devtools::install_github("rmhogervorst/imdb")`
+
+
+in the near future:
+**_Installation via cran with : install_packages(NAMEOFPACKAGE)_**
+
+# Example usage
+imdb has 2 functions: 
+
+- imdbSeries() and 
+- enrichIMDB() 
+
+With the function 'imdbSeries(seriesname = "name of series", seasons = number(s))'
+you can call up general information about series. Note that the api is does
+not really care about case. "Game of Thrones" or "game of thrones" or 
+"gAmE oF tHrONes "  is all fine. 
+
+```{r example for game of trones season 1}
+library(imdb)
+imdbSeries("game of thrones ")
+```
+
+The command will return a data frame with Title, releasedate, episodenumber
+imdb-rating, imdb ID and season. 
+
+Would you like to know more about your series? Use the `enrichIMDB` command:
+
+```{r enrichIMDB example game of thrones}
+season2GOT <-imdbSeries("game of thrones", seasons = 2)
+season2GOT_enriched <- enrichIMDB(season2GOT)
+```
+
+The enrichIMDB command returns a seperate dataframe with 
+imdbID, runtime, director, writer, actors, plot (complete synopsis), and votes 
+per episode. It uses the imdbid of the episode to scour for more information.
+So if you'd like to know how many times Jon Snow appears in the synopsis, 
+or how many times Peter Dinklage plays in season 2, you can now search for it.
+
+```{r examples}
+grep("Jon",  season2GOT_enriched$plot)
+grep("Peter Dinklage", season2GOT_enriched$actors)
+```
+
+Combining the information from the two dataframes can also be very useful.
+
+```{r combining everything}
+library(ggplot2)
+suppressPackageStartupMessages(library(dplyr))
+GOTall<-imdbSeries("game of Thrones", 1:6)
+GOT <-left_join(GOTall, enrichIMDB(GOTall), by = "imdbID")
+ggplot(GOT, aes(Episode, imdbRating)) + 
+        geom_smooth(aes(color = as.factor(Season)),se = FALSE , alpha = 1/10)+
+        geom_point(aes(color = as.factor(Season), size = votes))+
+        ggtitle("Rating per episode of GoT, \ncolored by season\nwith smoothlines")
+```
+
+
+# Contact
+I'm always looking for people to help me improve my work. 
+Contact me directly, use an [issue](https://github.com/RMHogervorst/imdb/issues), fork me or submit a pull request.
+
+[![star this repo](http://githubbadges.com/star.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/badgecreatr)
+[![fork this repo](http://githubbadges.com/fork.svg?user=RMHogervorst&repo=imdb&style=flat)](https://github.com/RMHogervorst/badgecreatr/fork)

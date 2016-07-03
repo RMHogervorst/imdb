@@ -26,7 +26,7 @@ enrichIMDB<- function(df){
         #  loop through ids and add information into a row and adding it to dataframe.
         for(i in IDs) {
                 link <- paste("http://www.omdbapi.com/?i=", i ,"&plot=full&r=json", sep = "")
-                hold<-fromJSON(link)
+                hold<-jsonlite::fromJSON(link)
                 newrow<- c( i, hold$Runtime, hold$Director, hold$Writer, hold$Actors, hold$Plot, hold$imdbVotes)
                 dataframe<-rbind(dataframe, newrow)
         }

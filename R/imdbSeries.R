@@ -16,7 +16,7 @@ imdbSeries<-function(seriesname, seasons = 1) {
                        imdbID = character(0), Season =numeric(0))  #creates empty dataframe
         for( i in seasons) {
                 link<-gsub(pattern = " ", replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",seriesname,"&Season=",i, sep = "")))
-                hold<-fromJSON(link)  # link with spaces replaced
+                hold<-jsonlite::fromJSON(link)  # link with spaces replaced
                 dftemp<-hold$Episodes #using only the Episodes part
                 dftemp$Season <-i     # adding variable season
                 df<- rbind(df, dftemp)# combining
@@ -26,5 +26,5 @@ imdbSeries<-function(seriesname, seasons = 1) {
         df$Released<-as.Date(df$Released)
         df$Episode<- as.numeric(df$Episode)
         df$imdbRating<- as.numeric(df$imdbRating)
-        return(df)
+        df
 }
