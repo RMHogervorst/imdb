@@ -10,12 +10,12 @@ enrichIMDB(df)
 \item{df}{Name of dataframe you want to add info to. NEEDS an imdbID variable.}
 }
 \description{
-This function downloads episode information into a dataframe. 
+This function downloads episode information into a dataframe.
 Use it to create a dataframe with extra information about every epidode.
 it downloads runtime, director, writer, actors, plot and imdb votes.
 }
 \examples{
-\dontrun{ 
+\dontrun{
 enrichIMDB("IMDB")
 }
 }
