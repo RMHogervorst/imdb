@@ -14,22 +14,26 @@ knitr::opts_chunk$set(
 
 # Short description of the package
 
-imdb helps you in downloading series information from imdb. It has two functions
-one for basic information and a second one that also downloads synopsis, actors etc.
+The package imdb helps you in downloading series and movie information from imdb. It has three functions
+one for basic information about series and a second one that also downloads synopsis, actors etc.
+A third function downloads information about movies.
+
+## version information
+[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
+
+
 
 
 # Installation instructions
 For now you will have to install using `devtools::install_github("rmhogervorst/imdb")`
 
 
-in the near future:
-**_Installation via cran with : install_packages(NAMEOFPACKAGE)_**
-
 # Example usage
 imdb has 2 functions: 
 
-- imdbSeries() and 
-- enrichIMDB() 
+- imdbSeries()
+- enrichIMDB() and
+- imdbMovies()
 
 With the function 'imdbSeries(seriesname = "name of series", seasons = number(s))'
 you can call up general information about series. Note that the api is does

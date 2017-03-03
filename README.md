@@ -3,22 +3,26 @@
 Short description of the package
 ================================
 
-imdb helps you in downloading series information from imdb. It has two functions one for basic information and a second one that also downloads synopsis, actors etc.
+The package imdb helps you in downloading series and movie information from imdb. It has three functions one for basic information about series and a second one that also downloads synopsis, actors etc. A third function downloads information about movies.
+
+version information
+-------------------
+
+[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
 
 Installation instructions
 =========================
 
 For now you will have to install using `devtools::install_github("rmhogervorst/imdb")`
 
-in the near future: ***Installation via cran with : install\_packages(NAMEOFPACKAGE)***
-
 Example usage
 =============
 
 imdb has 2 functions:
 
--   imdbSeries() and
--   enrichIMDB()
+-   imdbSeries()
+-   enrichIMDB() and
+-   imdbMovies()
 
 With the function 'imdbSeries(seriesname = "name of series", seasons = number(s))' you can call up general information about series. Note that the api is does not really care about case. "Game of Thrones" or "game of thrones" or "gAmE oF tHrONes " is all fine.
 
@@ -26,15 +30,15 @@ With the function 'imdbSeries(seriesname = "name of series", seasons = number(s)
 library(imdb)
 imdbSeries("game of thrones ")
 #>                                    Title   Released Episode imdbRating
-#> 1                       Winter Is Coming 2011-04-17       1        8.9
-#> 2                          The Kingsroad 2011-04-24       2        8.7
-#> 3                              Lord Snow 2011-05-01       3        8.6
+#> 1                       Winter Is Coming 2011-04-17       1        9.0
+#> 2                          The Kingsroad 2011-04-24       2        8.8
+#> 3                              Lord Snow 2011-05-01       3        8.7
 #> 4  Cripples, Bastards, and Broken Things 2011-05-08       4        8.7
-#> 5                  The Wolf and the Lion 2011-05-15       5        9.0
-#> 6                         A Golden Crown 2011-05-22       6        9.1
+#> 5                  The Wolf and the Lion 2011-05-15       5        9.1
+#> 6                         A Golden Crown 2011-05-22       6        9.2
 #> 7                     You Win or You Die 2011-05-29       7        9.2
-#> 8                         The Pointy End 2011-06-05       8        8.9
-#> 9                                 Baelor 2011-06-12       9        9.5
+#> 8                         The Pointy End 2011-06-05       8        9.0
+#> 9                                 Baelor 2011-06-12       9        9.6
 #> 10                        Fire and Blood 2011-06-19      10        9.4
 #>       imdbID Season
 #> 1  tt1480055      1
@@ -62,7 +66,7 @@ The enrichIMDB command returns a seperate dataframe with imdbID, runtime, direct
 
 ``` r
 grep("Jon",  season2GOT_enriched$plot)
-#> [1]  3  6  7  8 10
+#> [1]  2  3  6  7  8 10
 grep("Peter Dinklage", season2GOT_enriched$actors)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
@@ -73,15 +77,12 @@ Combining the information from the two dataframes can also be very useful.
 library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
 GOTall<-imdbSeries("game of Thrones", 1:6)
-#> Warning in imdbSeries("game of Thrones", 1:6): NAs introduced by coercion
 GOT <-left_join(GOTall, enrichIMDB(GOTall), by = "imdbID")
-#> Warning in enrichIMDB(GOTall): NAs introduced by coercion
 ggplot(GOT, aes(Episode, imdbRating)) + 
         geom_smooth(aes(color = as.factor(Season)),se = FALSE , alpha = 1/10)+
         geom_point(aes(color = as.factor(Season), size = votes))+
         ggtitle("Rating per episode of GoT, \ncolored by season\nwith smoothlines")
-#> Warning: Removed 1 rows containing non-finite values (stat_smooth).
-#> Warning: Removed 1 rows containing missing values (geom_point).
+#> `geom_smooth()` using method = 'loess'
 ```
 
 ![](README-combining%20everything-1.png)

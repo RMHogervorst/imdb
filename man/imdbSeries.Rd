@@ -21,4 +21,3 @@ imdbSeries("House MD", 1:2)
 }
 \keyword{imdb,}
 \keyword{series}
-

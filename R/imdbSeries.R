@@ -10,6 +10,7 @@
 #' @keywords imdb, series
 #' @export
 imdbSeries<-function(seriesname, seasons = 1) {
+        if(!seasons >=1){stop("season numbers need to be above 1, try 1:2, 3 etc.")}
         df<-data.frame(Title = character(0), Released = character(0),
                        Episode = character(0), imdbRating = character(0),
                        imdbID = character(0), Season =numeric(0))  #creates empty dataframe
