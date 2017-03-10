@@ -12,10 +12,9 @@ r:
 
 warnings_are_errors: true
 
-r_github_packages:
-  - jimhester/covr
-
-
+env:
+  global:
+    - MAKEFLAGS="-j 2"
 
 after_success:
-  - Rscript -e 'library(covr);codecov()'
+- test $TRAVIS_R_VERSION_STRING = "release" && Rscript -e 'covr::codecov()'
