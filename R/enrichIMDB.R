@@ -31,5 +31,6 @@ enrichIMDB<- function(df){
         }
         dataframe = dataframe[-1,] #issue with rbind forces me to remove the useless row
         dataframe$votes<-as.numeric(dataframe$votes) # votes are numeric
+        ToS_message()
         return(dataframe)
 }
