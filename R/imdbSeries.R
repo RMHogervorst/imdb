@@ -26,5 +26,6 @@ imdbSeries<-function(seriesname, seasons = 1) {
         df$Released<-as.Date(df$Released)
         df$Episode<- as.numeric(df$Episode)
         df$imdbRating<- as.numeric(df$imdbRating)
+        ToS_message()
         df
 }
