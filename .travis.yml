@@ -1,14 +1,10 @@
 # Sample .travis.yml for R projects
 
 language: r
-matrix:
-  include:
-    - os: linux
-      dist: precise
-
 sudo: false
 cache: packages
 r:
+  - oldrel
   - release
   - devel
 
