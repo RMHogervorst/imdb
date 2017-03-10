@@ -27,6 +27,7 @@ imdbMovies <- function(moviename){
                          imdbVotes = hold$imdbVotes,
                          imdbID = hold$imdbID,
                          stringsAsFactors = FALSE)
+                ToS_message()
         df
 
 }
