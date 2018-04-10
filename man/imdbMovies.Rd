@@ -4,10 +4,12 @@
 \alias{imdbMovies}
 \title{Download information about a movie from imdb}
 \usage{
-imdbMovies(moviename)
+imdbMovies(moviename, key)
 }
 \arguments{
 \item{moviename}{Type the name of the movie}
+
+\item{key}{Enter your API key. If you don't have one yet, you can obtain one here: http://www.omdbapi.com/apikey.aspx}
 }
 \description{
 Download information about a movie from imdb
