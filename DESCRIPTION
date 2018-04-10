@@ -1,7 +1,8 @@
 Package: imdb
 Title: Download IMDB Series Information Into a Dataframe
 Version: 0.1.0
-Authors@R: person("Roel M.", "Hogervorst", email = "hogervorst.rm@gmail.com", role = c("aut", "cre"))
+Authors@R: c(person("Roel M.", "Hogervorst", email = "hogervorst.rm@gmail.com", role = c("aut", "cre")),
+        person("Josh", "Yazman", role = "ctb"))
 Description: This package downloads imdb information using
     http://www.omdbapi.com and puts it into a dataframe.
     In the background a json is

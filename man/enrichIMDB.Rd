@@ -4,10 +4,12 @@
 \alias{enrichIMDB}
 \title{IMDB information enricher.}
 \usage{
-enrichIMDB(df)
+enrichIMDB(df, key)
 }
 \arguments{
 \item{df}{Name of dataframe you want to add info to. NEEDS an imdbID variable.}
+
+\item{key}{Enter your API key. If you don't have one yet, you can obtain one here: http://www.omdbapi.com/apikey.aspx}
 }
 \description{
 This function downloads episode information into a dataframe.

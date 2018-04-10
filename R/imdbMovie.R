@@ -2,10 +2,11 @@
 #' Download information about a movie from imdb
 #'
 #' @param moviename Type the name of the movie
+#' @inheritParams imdbSeries
 #' @export
-imdbMovies <- function(moviename){
+imdbMovies <- function(moviename, key){
         link<-gsub(pattern = " ",
-                   replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",moviename,"&type=movie&r=json&plot=full", sep = "")))
+                   replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",moviename,"&type=movie&r=json&plot=full",'&apikey=', key, sep = "")))
         hold<-jsonlite::fromJSON(link)
         if(hold$Response != "True")stop("response is not valid")
         df <- data.frame(Title = hold$Title,
