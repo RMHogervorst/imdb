@@ -66,3 +66,24 @@ set_omdb_key <- function(){
         }
         key
 }
+
+
+
+#' Make a call to the api
+#'
+
+call_api <- function(series = NULL, season = NULL, api_key = NULL){
+        link <- "http://www.omdbapi.com/"
+
+        gsub(pattern = " ", replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",seriesname,"&Season=",i, sep = "")))
+        config = list(
+                t= series,
+                Season= season,
+                #,
+                type=movie,
+                r="json",
+                plot="full",
+                api_key = api_key(api_key)
+        )
+        httr::GET(url = link, config = config)
+}
