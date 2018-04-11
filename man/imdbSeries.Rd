@@ -4,12 +4,14 @@
 \alias{imdbSeries}
 \title{IMDB information downloader for series.}
 \usage{
-imdbSeries(seriesname, seasons = 1)
+imdbSeries(seriesname, seasons = 1, key)
 }
 \arguments{
 \item{seriesname}{Give the name of the series for example "House MD"}
 
 \item{seasons}{Information about hat seasons do you want to download? Defaults to 1.}
+
+\item{key}{Enter your API key. If you don't have one yet, you can obtain one here: http://www.omdbapi.com/apikey.aspx}
 }
 \description{
 This function downloads series information into a dataframe.

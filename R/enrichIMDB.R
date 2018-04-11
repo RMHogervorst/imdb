@@ -4,13 +4,14 @@
 #' Use it to create a dataframe with extra information about every epidode.
 #' it downloads runtime, director, writer, actors, plot and imdb votes.
 #' @param df Name of dataframe you want to add info to. NEEDS an imdbID variable.
+#' @inheritParams imdbSeries
 #' @examples
 #' \dontrun{
 #' enrichIMDB("IMDB")
 #' }
 #' @keywords imdb, enrich
 #' @export
-enrichIMDB<- function(df){
+enrichIMDB<- function(df, key){
         #read all unique  id's
         IDs<- unique(df$imdbID)
         #issue with rbind that breaks the column names, forces me to create a useless row
@@ -24,7 +25,7 @@ enrichIMDB<- function(df){
         dataframe<-data.frame(imdbID, runtime,director, writer,actors, plot,votes, stringsAsFactors = F)
         #  loop through ids and add information into a row and adding it to dataframe.
         for(i in IDs) {
-                link <- paste("http://www.omdbapi.com/?i=", i ,"&plot=full&r=json", sep = "")
+                link <- paste("http://www.omdbapi.com/?i=", i ,"&plot=full&r=json",'&apikey=', key, sep = "")
                 hold<-jsonlite::fromJSON(link)
                 newrow<- c( i, hold$Runtime, hold$Director, hold$Writer, hold$Actors, hold$Plot, hold$imdbVotes)
                 dataframe<-rbind(dataframe, newrow)
