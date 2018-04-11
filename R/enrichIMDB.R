@@ -11,7 +11,8 @@
 #' }
 #' @keywords imdb, enrich
 #' @export
-enrichIMDB<- function(df, key){
+enrichIMDB<- function(df, key = NULL){
+        key <- api_key(key)
         #read all unique  id's
         IDs<- unique(df$imdbID)
         #issue with rbind that breaks the column names, forces me to create a useless row
