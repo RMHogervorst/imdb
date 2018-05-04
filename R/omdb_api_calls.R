@@ -67,7 +67,10 @@ set_omdb_key <- function(){
         key
 }
 
-
+add_key_to_renviron <- function(key, location = "~/.Renviron" ){
+        location <- path.expand(location)
+        message("searching for file ",location)
+}
 
 #' Make a call to the api
 #'
