@@ -4,7 +4,7 @@
 \alias{imdbSeries}
 \title{IMDB information downloader for series.}
 \usage{
-imdbSeries(seriesname, seasons = 1, key)
+imdbSeries(seriesname, seasons = 1, key = NULL)
 }
 \arguments{
 \item{seriesname}{Give the name of the series for example "House MD"}

@@ -55,6 +55,7 @@ check_api_key <- function(){
 # key writing function
 # don't export, internal function.
 # returns error or key (also sets it in local env)
+#
 set_omdb_key <- function(){
         message("No omdb key found")
         key <- readline("Please enter your omdb api key: ")
@@ -67,9 +68,34 @@ set_omdb_key <- function(){
         key
 }
 
-add_key_to_renviron <- function(key, location = "~/.Renviron" ){
+#' Add your api key to .Renviron
+#'
+#' This is a convenient function that writes
+#' your key to the .Renviron file that is read in
+#' at start. You dont have to give the key in, if
+#' you use keep the key NULL it will ask for it in
+#' the commandline (keeping it out of the logs and .history).
+#'
+#' Of course you can also go to the file and add it yourself.
+#' the file should have a line that reads:
+#' OMDB_KEY=key
+#'
+#' where you replace your key with your key.
+#' @export
+add_key_to_renviron <- function(key = NULL, location = "~/.Renviron" ){
+        if(!Sys.getenv('OMDB_KEY')==""){warning("The R session already as a OMDB key")}
         location <- path.expand(location)
         message("searching for file ",location)
+        if(!file.exists(location)){stop("The file does does not exist")}
+        file <- readLines(location)
+        if(!any(grepl("OMDB_KEY", file))){
+                if(is.null(key)){key <- set_omdb_key()}
+                file <- append(file, paste0("OMDB_KEY=",key))
+                writeLines(file, location)
+                message("key added to ",location," restart session to read it in")
+        }else{
+                stop("The file ",location, " already contains an OMDB_KEY")
+        }
 }
 
 #' Make a call to the api

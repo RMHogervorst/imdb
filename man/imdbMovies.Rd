@@ -4,7 +4,7 @@
 \alias{imdbMovies}
 \title{Download information about a movie from imdb}
 \usage{
-imdbMovies(moviename, key)
+imdbMovies(moviename, key = NULL)
 }
 \arguments{
 \item{moviename}{Type the name of the movie}

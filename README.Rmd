@@ -34,7 +34,7 @@ free key. You can make a 1000 calls per day with the free account.
 Add the key to your .Renviron (~/.Renviron) file:
 add a line like 'OMDB_KEY = xxxkeyxxx' to the file.
 
-
+Or use the function add_key_to_renviron from the package.
 
 # Example usage
 imdb has 2 functions: 
