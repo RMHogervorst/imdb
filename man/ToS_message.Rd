@@ -11,10 +11,11 @@ ToS_message()
 }
 \description{
 It has come to my attention that the use of the omdbapi might violate the terms of service
-that imdb has set up. According to \url{http://www.imdb.com/conditions} scraping is forbidden. 
-I did not scrape IMDB but since we are using the omdb-api, we sort of violate the terms of service 
-indirectly. This is just a heads up. 
- 
+that imdb has set up. According to \url{http://www.imdb.com/conditions} scraping is forbidden.
+I did not scrape IMDB but since we are using the omdb-api, we sort of violate the terms of service
+indirectly. This is just a heads up.
+}
+\details{
 If you would like to stop this message, add a line to your .Renviron file: IMDBTOGGLE = "off". If you do I presume
 you have read the message.
 }

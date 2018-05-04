@@ -12,9 +12,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Short description of the package
+# Wat can I do with the imdb package?
 
-The package imdb helps you in downloading series and movie information from imdb. It has three functions
+The package imdb helps you in downloading series and movie information from imdb (it uses the omdbi api). It has three functions
 one for basic information about series and a second one that also downloads synopsis, actors etc.
 A third function downloads information about movies.
 
@@ -27,6 +27,14 @@ A third function downloads information about movies.
 # Installation instructions
 For now you will have to install using `devtools::install_github("rmhogervorst/imdb")`
 
+To make calls to the API you need an API-key. 
+go to <https://www.omdbapi.com/apikey.aspx> and register for a
+free key. You can make a 1000 calls per day with the free account.
+
+Add the key to your .Renviron (~/.Renviron) file:
+add a line like 'OMDB_KEY = xxxkeyxxx' to the file.
+
+Or use the function add_key_to_renviron from the package.
 
 # Example usage
 imdb has 2 functions: 
@@ -68,7 +76,7 @@ grep("Peter Dinklage", season2GOT_enriched$actors)
 
 Combining the information from the two dataframes can also be very useful.
 
-```{r combining everything}
+```{r combining everything, eval=FALSE}
 library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
 GOTall<-imdbSeries("game of Thrones", 1:6)

@@ -4,7 +4,7 @@
 \alias{enrichIMDB}
 \title{IMDB information enricher.}
 \usage{
-enrichIMDB(df, key)
+enrichIMDB(df, key = NULL)
 }
 \arguments{
 \item{df}{Name of dataframe you want to add info to. NEEDS an imdbID variable.}

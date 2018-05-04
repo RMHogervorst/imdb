@@ -10,7 +10,8 @@
 #' }
 #' @keywords imdb, series
 #' @export
-imdbSeries<-function(seriesname, seasons = 1, key) {
+imdbSeries<-function(seriesname, seasons = 1, key = NULL) {
+        key <- api_key(key)
         if(!seasons >=1){stop("season numbers need to be above 1, try 1:2, 3 etc.")}
         df<-data.frame(Title = character(0), Released = character(0),
                        Episode = character(0), imdbRating = character(0),
