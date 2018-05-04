@@ -1,5 +1,6 @@
 context("testing imdbmovie")
 key1 <- Sys.getenv('OMDB_KEY')
+Sys.setenv(IMDBTOGGLE = "off")
 test_that("several caps and types return identical frames", {
         a<- imdbMovies("Meatballs", key = key1)
         b<- imdbMovies("MEATBALLS", key = key1)

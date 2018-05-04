@@ -6,6 +6,11 @@
 \usage{
 add_key_to_renviron(key = NULL, location = "~/.Renviron")
 }
+\arguments{
+\item{key}{keep NULL to search or add manualy}
+
+\item{location}{what file do you want to write to?  defaults to ~/.Renviron}
+}
 \description{
 This is a convenient function that writes
 your key to the .Renviron file that is read in

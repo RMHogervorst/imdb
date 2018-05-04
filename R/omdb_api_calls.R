@@ -81,6 +81,9 @@ set_omdb_key <- function(){
 #' OMDB_KEY=key
 #'
 #' where you replace your key with your key.
+#'
+#' @param key keep NULL to search or add manualy
+#' @param location what file do you want to write to?  defaults to ~/.Renviron
 #' @export
 add_key_to_renviron <- function(key = NULL, location = "~/.Renviron" ){
         if(!Sys.getenv('OMDB_KEY')==""){warning("The R session already as a OMDB key")}
@@ -98,8 +101,6 @@ add_key_to_renviron <- function(key = NULL, location = "~/.Renviron" ){
         }
 }
 
-#' Make a call to the api
-#'
 
 call_api <- function(series = NULL, season = NULL, api_key = NULL){
         link <- "http://www.omdbapi.com/"

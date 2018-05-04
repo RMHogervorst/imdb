@@ -1,5 +1,5 @@
 context("imdbSeries characters")
-
+Sys.setenv(IMDBTOGGLE = "off")
 key1 <- Sys.getenv('OMDB_KEY')
 test_that("several caps and types return identical frames", {
         a<- imdbSeries("Game OF THRONES", key = key1)
@@ -8,7 +8,6 @@ test_that("several caps and types return identical frames", {
 })
 
 test_that("usefull error messages are created", {
-        skip_on_travis()
         expect_error(imdbSeries("Game OF THRONES", seasons = 1-5, key = key1),
                      regexp = "season numbers")
 })

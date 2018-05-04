@@ -1,5 +1,5 @@
 context("internals")
-
+Sys.setenv(IMDBTOGGLE = "off")
 key1 <- Sys.getenv('OMDB_KEY')
 
 test_that("keys are located", {
