@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Short description of the package
+# Wat can I do with the imdb package?
 
 The package imdb helps you in downloading series and movie information from imdb (it uses the omdbi api). It has three functions
 one for basic information about series and a second one that also downloads synopsis, actors etc.
@@ -76,7 +76,7 @@ grep("Peter Dinklage", season2GOT_enriched$actors)
 
 Combining the information from the two dataframes can also be very useful.
 
-```{r combining everything}
+```{r combining everything, eval=FALSE}
 library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
 GOTall<-imdbSeries("game of Thrones", 1:6)
