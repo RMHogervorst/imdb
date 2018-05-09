@@ -1,0 +1,121 @@
+---
+title: "Walkthrough"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Walkthrough}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This document gives you a walkthrough of the package and describes 
+several usecases. I assume you have knowledge of downloading and installing
+a package.
+
+```{r glossary}
+library(dplyr)# for this specific part
+tibble::tribble(
+        ~Term, ~explanation,
+        "API", "Application Programming Interface, a term most often used when describing an internet endpoint (but also used within a single piece of software to describe what parts can be used by other programs). An internet API allows us to send a request to a service and recieve a standardized result back.",
+        "OMDBapi", "Open Movie Database API",
+        ".Rrnviron", "When R starts it reads in this file and adds all keys to it's configuration. This allows you to access keys without ever putting them in your console."
+)
+```
+
+## First use - get a key
+To use the service, you need a key. This key identifies you for OMDBapi.
+Go to the website omdbapi.com and click on get key or go directly
+to <http://omdbapi.com/apikey.aspx>
+
+If you want to support the OMDBapi authors on Patreon use that option otherwise
+use the free option, and input your email adres.
+
+I think you recieve an email with the key in it.
+
+## First use - save the key safely
+*You don't have to add this key to a file, you can call every function with the key argument filled. However this makes it difficult to share a script (it has you secret key in that file!).*
+
+We want R to have access to the key and not retype the key with every request.
+That is why we save the key to a file that is read by R on startup.
+This file is called .Renviron (the dot means it's normally hidden from view)
+Either go manually to ~/.Renviron (On windows )
+
+```{r, eval=FALSE}
+file.edit("~/.Renviron")
+```
+
+More info on: <https://csgillespie.github.io/efficientR/3-3-r-startup.html#renviron> and <https://stat.ethz.ch/R-manual/R-devel/library/base/html/Startup.html> 
+
+Or use the convenience function I added to this package:
+
+```{r eval=FALSE}
+library(imdb)
+add_key_to_renviron("fillInYourKeyHere")
+```
+
+If you leave the key empty a prompt will ask you for the key (that way it never gets recorded in your .Rhistory file).
+
+## I want to download imdb information for a movie (I know the title)
+
+Use the title to search for a movie.
+
+This returns a dataframe with a row for every match. 
+```{r}
+library(imdb)
+movies <- imdbMovies(moviename = "2001 a space odyssey")
+movies[,c(1:7,15:18)]
+```
+
+
+
+## I want to download basic information about a series (I know the title)
+
+This downloads a dataframe with all episodes.
+
+```{r}
+library(imdb)
+series <- imdbSeries("The Orville")
+series
+```
+
+
+## I want to download more information about a series
+
+Use the enrichIMDB function to add more information to
+the series you downloaded.
+
+```{r}
+series <- enrichIMDB(df = series)
+series[1:2,]
+```
+
+
+## I know the imdbID and want to download that specific information
+
+If you have imdbID's and want more information about a that title 
+you can use the imdbTitleId function to download that specific 
+information from the API.
+
+For instance I want to know more about 'The Truman Show', it has id 'tt0120382'.
+
+```{r}
+trumanshow <- imdbTitleId("tt0120382")
+trumanshow
+```
+
+# I want something else
+
+I'm sorry, I don't have more. You can always ask a question by opening 
+an [issue](https://github.com/RMHogervorst/imdb/issues) on github. 
+
+
