@@ -103,7 +103,7 @@ add_key_to_renviron <- function(key = NULL, location = "~/.Renviron" ){
 
 # This function is now not used.
 # Want to replace all the custom calls with this function.
-call_api <- function(series = NULL, season = NULL, api_key = NULL){
+call_api <- function(series = NULL, season = NULL, movie = NULL, api_key = NULL){
         link <- "http://www.omdbapi.com/"
 
         #gsub(pattern = " ", replacement = "%20", x=(paste("http://www.omdbapi.com/?t=",series,"&Season=",season, sep = "")))
