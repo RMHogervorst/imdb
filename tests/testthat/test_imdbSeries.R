@@ -1,6 +1,8 @@
 context("imdbSeries characters")
-Sys.setenv(IMDBTOGGLE = "off")
-key1 <- Sys.getenv('OMDB_KEY')
+if(!exists("key1")){
+        key1 <- Sys.getenv('OMDB_KEY')
+        Sys.setenv(IMDBTOGGLE = "off")
+}
 test_that("several caps and types return identical frames", {
         a<- imdbSeries("Game OF THRONES", key = key1)
         b<- imdbSeries("Game-of-thrones", key = key1)
