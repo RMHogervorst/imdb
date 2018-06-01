@@ -5,10 +5,12 @@ Wat can I do with the imdb package?
 
 The package imdb helps you in downloading series and movie information from imdb (it uses the omdbi api). It has three functions one for basic information about series and a second one that also downloads synopsis, actors etc. A third function downloads information about movies.
 
-version information
+A walkthrough in the [vignette](articles/walktrough.html) provides more information.
+
+Version information
 -------------------
 
-[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
+[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
 
 Installation instructions
 =========================
@@ -24,19 +26,18 @@ Or use the function add\_key\_to\_renviron from the package.
 Example usage
 =============
 
-imdb has 2 functions:
+imdb has 4 functions:
 
 -   imdbSeries()
 -   enrichIMDB() and
--   imdbMovies()
+-   imdbMovies() and
+-   imdbTitleId()
 
 With the function 'imdbSeries(seriesname = "name of series", seasons = number(s))' you can call up general information about series. Note that the api is does not really care about case. "Game of Thrones" or "game of thrones" or "gAmE oF tHrONes " is all fine.
 
 ``` r
 library(imdb)
 imdbSeries("game of thrones ")
-#> You might violate the terms of service of imdb using this package and the omdbapi. 
-#>  for more info try ?tos_violation
 #>                                    Title   Released Episode imdbRating
 #> 1                       Winter Is Coming 2011-04-17       1        9.0
 #> 2                          The Kingsroad 2011-04-24       2        8.8
@@ -67,11 +68,7 @@ Would you like to know more about your series? Use the `enrichIMDB` command:
 
 ``` r
 season2GOT <-imdbSeries("game of thrones", seasons = 2)
-#> You might violate the terms of service of imdb using this package and the omdbapi. 
-#>  for more info try ?tos_violation
 season2GOT_enriched <- enrichIMDB(season2GOT)
-#> You might violate the terms of service of imdb using this package and the omdbapi. 
-#>  for more info try ?tos_violation
 ```
 
 The enrichIMDB command returns a seperate dataframe with imdbID, runtime, director, writer, actors, plot (complete synopsis), and votes per episode. It uses the imdbid of the episode to scour for more information. So if you'd like to know how many times Jon Snow appears in the synopsis, or how many times Peter Dinklage plays in season 2, you can now search for it.

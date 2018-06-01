@@ -12,14 +12,18 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
+
+
+
+
 # Wat can I do with the imdb package?
 
 The package imdb helps you in downloading series and movie information from imdb (it uses the omdbi api). It has three functions
 one for basic information about series and a second one that also downloads synopsis, actors etc.
 A third function downloads information about movies.
 
-## version information
-[![codecov](https://codecov.io/gh/RMHogervorst/imdb/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/imdb)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/imdb)](https://cran.r-project.org/package=imdb)[![Last-changedate](https://img.shields.io/badge/last%20change-2017--03--03-yellowgreen.svg)](/commits/master)[![Licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg)](http://choosealicense.com/)[![minimal R version](https://img.shields.io/badge/R-3.2.2-6666ff.svg)](https://cran.r-project.org/)[![Project Status: active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)[![Build Status](https://travis-ci.org/RMHogervorst/imdb.svg?branch=master)](https://travis-ci.org/RMHogervorst/imdb)
+A walkthrough in the [vignette](articles/walktrough.html) provides more information.
 
 
 
